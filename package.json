@@ -5,6 +5,7 @@
     "name": "Ahad Chowdhury",
     "website": "https://www.maacpiash.com"
   },
+  "license": "MIT",
   "scripts": {
     "build": "solid-start build",
     "dev": "solid-start dev",
