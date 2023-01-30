@@ -1,0 +1,8 @@
+node_modules
+public
+*.json
+*.yaml
+.pnp*
+.vscode
+.solid
+*.md
