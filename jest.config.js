@@ -21,26 +21,4 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import solid from 'solid-start/vite'
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  test: {
-    environment: 'jsdom',
-    transformMode: {
-      web: [/.[jt]sx?/],
-    },
-    deps: {
-      registerNodeLoader: true,
-      inline: [/solid-js/],
-    },
-    globals: true,
-    threads: false,
-    isolate: false,
-    setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setup-vitest.js'],
-  },
-  plugins: [solid()],
-  resolve: {
-    conditions: ['development', 'browser'],
-  },
-})
+export const preset = 'solid-jest/preset/browser'

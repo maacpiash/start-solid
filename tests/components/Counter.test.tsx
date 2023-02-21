@@ -21,26 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import solid from 'solid-start/vite'
-import { defineConfig } from 'vite'
+import { describe, test, expect } from 'vitest'
+import { fireEvent, render } from '@solidjs/testing-library'
+import Counter from '~/components/Counter'
 
-export default defineConfig({
-  test: {
-    environment: 'jsdom',
-    transformMode: {
-      web: [/.[jt]sx?/],
-    },
-    deps: {
-      registerNodeLoader: true,
-      inline: [/solid-js/],
-    },
-    globals: true,
-    threads: false,
-    isolate: false,
-    setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setup-vitest.js'],
-  },
-  plugins: [solid()],
-  resolve: {
-    conditions: ['development', 'browser'],
-  },
+describe('<Counter />', () => {
+  test('renders', () => {
+    const { container, unmount } = render(() => <Counter />)
+    expect(container.innerHTML).toMatchSnapshot()
+    unmount()
+  })
+
+  test('increments value', async () => {
+    const { queryByRole, unmount } = render(() => <Counter />)
+    const button = queryByRole('button') as HTMLButtonElement
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveTextContent(/Clicks: 0/)
+    fireEvent.click(button)
+    expect(button).toHaveTextContent(/Clicks: 1/)
+    unmount()
+  })
 })

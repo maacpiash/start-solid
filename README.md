@@ -7,6 +7,7 @@ Everything you need to build a Solid project, powered by [`solid-start`](https:/
 - Solid.js with Solid Start (Vite, TypeScript)
 - Prettier
 - ESLint
+- Unit testing with Vitest
 
 ## Developing
 
@@ -25,3 +26,4 @@ pnpm dev
 | `pnpm build`        | Build your production site                         |
 | `pnpm format`       | Format using Prettier                              |
 | `pnpm lint`         | Run linter using ESLint                            |
+| `pnpm test`         | Run unit tests using Vitest                        |
